@@ -7,7 +7,6 @@ import React, { useState, useTransition } from 'react'
 import { DateRange, DayPicker } from 'react-day-picker';
 import { TripWithLocation } from './TripDetail';
 import { editTrip } from '@/lib/actions/trips/edit-trip';
-import { useRouter } from 'next/navigation';
 
 interface EditTripProps {
     trip: TripWithLocation,

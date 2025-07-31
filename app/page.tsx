@@ -1,5 +1,4 @@
 import { auth } from "@/auth";
-import SignInButton from "@/components/utils/SignInButton";
 import { CalendarDays, MapPinCheck, Users } from "lucide-react";
 import Image from "next/image";
 import { redirect } from "next/navigation";

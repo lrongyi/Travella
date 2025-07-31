@@ -52,7 +52,7 @@ export async function GET() {
     }));
 
     return NextResponse.json(transformedLocations);
-  } catch (error) {
+  } catch {
     return new NextResponse("Internal Error", {status: 500})
   }
 }

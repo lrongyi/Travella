@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
 import NewTripButton from '@/components/utils/NewTripButton';
 import Card from '@/components/utils/Card';
-import { Trash } from 'lucide-react';
 
 export default async function Tripspage() {
     

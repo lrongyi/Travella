@@ -1,8 +1,8 @@
 'use client'
 
 import { Calendar, MapPin } from 'lucide-react'
-import { DateRange, DayPicker, rangeIncludesDate } from 'react-day-picker';
-import React, { useState } from 'react'
+import { DayPicker, rangeIncludesDate } from 'react-day-picker';
+import React from 'react'
 import { TripWithLocation } from '../TripDetail';
 import MapSummary from './MapSummary';
 import NewLocationButton from '../../utils/NewLocationButton';
@@ -15,7 +15,7 @@ interface OverviewProps {
 
 export default function Overview({ startDate, endDate, trip}: OverviewProps) {
 
-  const [range, setRange] = useState<DateRange>({from: startDate, to: endDate})
+  const range = {from: startDate, to: endDate}
   return (
     <>
         <div>

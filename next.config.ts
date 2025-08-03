@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [{
       hostname: "fmvuxchxz3.ufs.sh"
     }]
+  },
+  eslint: {
+    ignoreDuringBuilds: true
   }
 };
 

@@ -6,6 +6,7 @@ import { Pencil, Trash } from 'lucide-react';
 import { DayPicker } from 'react-day-picker';
 import deleteLocation from '@/lib/actions/locations/delete-location';
 import EditingLocation from './EditingLocation';
+import { Location } from '@/prisma/generated/prisma';
 
 
 interface ItineraryProps {
@@ -23,7 +24,7 @@ export default function Itinerary({ trip }: ItineraryProps) {
   const endOfDay = new Date(dateSelected);
   endOfDay.setHours(23, 59, 59, 999);
 
-  const filteredLocations = locations.filter((loc) => {
+  const filteredLocations = locations.filter((loc: Location) => {
     const arrival = new Date(loc.arrivalTime);
     return arrival >= startOfDay && arrival <= endOfDay;
   });
@@ -35,7 +36,7 @@ export default function Itinerary({ trip }: ItineraryProps) {
   const handleDelete = async (locationId: string) => {
     const confirmed = window.confirm('Are you sure you want to delete this location?');
     if (confirmed) {
-      setLocations(prev => prev.filter(loc => loc.id !== locationId));
+      setLocations((prev: Location[]) => prev.filter(loc => loc.id !== locationId));
 
       try {
         await deleteLocation(locationId);
@@ -47,12 +48,12 @@ export default function Itinerary({ trip }: ItineraryProps) {
   };
 
   const handleEdit = async (locationId: string) => {
-    const loc = locations.find(l => l.id === locationId);
+    const loc = locations.find((l: Location) => l.id === locationId);
     if (loc) setEditingLocation(loc);
   }
 
   const handleSave = (updatedLocation: TripWithLocation['locations'][0]) => {
-    setLocations(prev =>
+    setLocations((prev: Location[]) =>
       prev.map(loc => loc.id === updatedLocation.id ? updatedLocation : loc)
     );
     setEditingLocation(null);

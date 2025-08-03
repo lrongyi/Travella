@@ -1,4 +1,4 @@
-import { Location } from '@/app/generated/prisma';
+import { Location } from '@/prisma/generated/prisma';
 import editLocation from '@/lib/actions/locations/edit-location';
 import React, { useState, useTransition } from 'react'
 import { DayPicker } from 'react-day-picker';

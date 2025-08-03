@@ -1,4 +1,4 @@
-import { Trip } from '@/app/generated/prisma'
+import { Trip } from '@/prisma/generated/prisma'
 import { Plus } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'

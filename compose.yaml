@@ -1,0 +1,16 @@
+services:
+  server:
+    image: lrongyi/travella:latest
+    platform: linux/amd64
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: ${DATABASE_URL}
+      NEXTAUTH_URL: https://travella-giq0.onrender.com
+      AUTH_TRUST_HOST: true
+      AUTH_SECRET: ${AUTH_SECRET}
+      PRISMA_QUERY_ENGINE_LIBRARY: /app/prisma/generated/prisma/libquery_engine-debian-openssl-3.0.x.so.node
+      UPLOADTHING_TOKEN: ${UPLOADTHING_TOKEN}
+    ports:
+      - 3000:3000
+    env_file:
+      - .env

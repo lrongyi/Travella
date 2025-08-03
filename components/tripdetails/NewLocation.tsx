@@ -5,7 +5,7 @@ import addLocation from '@/lib/actions/locations/add-location';
 import { DayPicker } from 'react-day-picker';
 import TimePicker from 'react-time-picker';
 import 'react-time-picker/dist/TimePicker.css';
-import { Trip } from '@/app/generated/prisma';
+import { Trip } from '@/prisma/generated/prisma';
 
 export default function NewLocationClient({trip}: {trip: Trip} ) {
 

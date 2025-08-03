@@ -7,6 +7,7 @@ import React, { useState, useTransition } from 'react'
 import { DateRange, DayPicker } from 'react-day-picker';
 import { TripWithLocation } from './TripDetail';
 import { editTrip } from '@/lib/actions/trips/edit-trip';
+import { Location, User } from '@/prisma/generated/prisma';
 
 interface EditTripProps {
     trip: TripWithLocation,
@@ -20,7 +21,7 @@ export default function EditTrip({trip, onClose}: EditTripProps) {
     const [imageUrl, setImageUrl] = useState<string|null>(trip.imageUrl);
     const [dateRange, setDateRange] = useState<DateRange | undefined>({from: trip.startDate, to: trip.endDate});
 
-    const contributorIds = trip.contributors.map((contrib) => contrib.email)
+    const contributorIds = trip.contributors.map((contrib: User) => contrib.email)
 
     const [contributors, setContributors] = useState<string[]>(contributorIds);
     const [contributorInput, setContributorInput] = useState('');
@@ -53,7 +54,7 @@ export default function EditTrip({trip, onClose}: EditTripProps) {
                         const from = new Date(dateRange.from.toDateString());
                         const to = new Date(dateRange.to.toDateString());
 
-                        const invalidLocation = trip.locations.find(location => {
+                        const invalidLocation = trip.locations.find((location: Location) => {
                             const arrivalDate = new Date(new Date(location.arrivalTime).toDateString());
                             return arrivalDate < from || arrivalDate > to;
                         });
